@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Controller;
+
+use App\Repository\PimentoRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
+class PimentoController extends AbstractController
+{
+    #[Route('/pimento/', name: 'pimento_index')]
+    public function index(PimentoRepository $pimentoRepository): Response
+    {
+        $pimentos = $pimentoRepository->findAll();
+        return $this->render('pimento/index.html.twig', [
+
+            'pimentos' => $pimentos,
+     
+         ]);
+    }
+}
+
+

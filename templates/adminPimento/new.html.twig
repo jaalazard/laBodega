@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pimento{% endblock %}
+
+{% block body %}
+    <h1>Create new Pimento</h1>
+
+    {{ include('pimento/_form.html.twig') }}
+
+    <a href="{{ path('pimento_index') }}">Retour à la liste</a>
+{% endblock %}

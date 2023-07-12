@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent()}}
+{% endblock %}
+
+{% block title %}Wild Pimentos
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+	<h1 class="text-center mt-5">Mettez du piment dans votre vie</h1>
+	<ul class="row g-3 d-flex justify-content-center mt-5">
+		{% for pimento in pimentos %}
+			<div class="card mx-3 bg-secondary" style="width: 21rem;">
+				<img class="card-img-top" style="width: 100%" src="{{ asset('build/images/pimento.jpg') }}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title text-center">{{ pimento.name }}</h5>
+					<p class="card-text">{{ pimento.description|u.truncate(70, '...') }}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item bg-secondary">Indice Scoville : {{ pimento.strength.name }}</li>
+					<li class="list-group-item bg-secondary">Famille : Piment {{ pimento.color.name }}</li>
+					<li class="list-group-item bg-secondary">Prix : {{ pimento.price }}€/kg</li>
+					<li class="list-group-item bg-secondary">Origine : {{ pimento.country.name }}</li>
+
+				</ul>
+				<div class="card-body">
+					<a href="{{ path('pimento_show', {'id': pimento.id}) }}" class="card-link text-decoration-none">Voir plus</a>
+					<a href="#" class="card-link text-decoration-none">Ajouter au panier</a>
+				</div>
+			</div>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

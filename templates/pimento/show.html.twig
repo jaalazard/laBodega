@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pimento{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">{{ pimento.name }}</h1>
+
+    <div class="card bg-secondary mx-auto" style="width: 50rem;">
+				<img class="card-img-top" style="width: 100%" src="{{ asset('build/images/pimento.jpg') }}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title text-center">{{ pimento.name }}</h5>
+					<p class="card-text">{{ pimento.description }}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item bg-secondary">Indice Scoville : {{ pimento.strength.name }}</li>
+					<li class="list-group-item bg-secondary">Famille : Piment {{ pimento.color.name }}</li>
+					<li class="list-group-item bg-secondary">Prix : {{ pimento.price }}€/kg</li>
+					<li class="list-group-item bg-secondary">Origine : {{ pimento.country.name }}</li>
+
+				</ul>
+<div class="d-flex justify-content-around my-5">
+    <a class="btn btn-outline-primary btn-sm w-25 text-decoration-none border-3" href="{{ path('pimento_index') }}">Retour</a>
+    <a href="#" class="btn btn-outline-primary btn-sm w-25 card-link text-decoration-none border-3">Ajouter au panier</a>
+    </div>
+{% endblock %}
