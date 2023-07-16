@@ -84,4 +84,17 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart_index');
     }
+
+    #[Route('/livraison', name: 'delivery', methods: ['GET'])]
+    public function delivery(): Response
+    {
+        return $this->render('delivery/index.html.twig');
+    }
+
+    #[Route('/paiement', name: 'payment', methods: ['GET'])]
+    public function pay(SessionInterface $sessionInterface): Response
+    {
+        $sessionInterface->remove("cart");
+        return $this->render('payment/index.html.twig');
+    }
 }

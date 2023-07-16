@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row my-5">
 			<h1 class="my-5 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
 
 			<table class="table table-striped">
@@ -42,9 +42,11 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td class="text-center">Total</td>
+						<td class="text-center fw-bolder">Total</td>
 						<td class="text-center">{{ total }}€</td>
 						<td class="text-end">
+						<a href="{{ path('cart_delivery')}}" class="btn btn-success">Valider et payer
+								{{ include('icons/coin.svg') }}</a>
 							<a href="{{ path('cart_delete_all')}}" class="btn btn-danger">Vider le panier
 								{{ include('icons/cartDelete.svg') }}</a>
 						</td>
