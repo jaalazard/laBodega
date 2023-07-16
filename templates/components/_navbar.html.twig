@@ -1,24 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary mb-0">
-  <a class="navbar-brand" href="#"> Aïe Pimento !</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#">Brand</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ path('pimento_index') }}">Accueil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">L'échelle de Scoville</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
-    </form>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{{ path('home') }}"><span class="h6">Accueil</span></a>
+      <a class="nav-item nav-link" href="{{ path('pimento_index') }}"><span class="h6">La boutique</span></a>
+      <a class="nav-item nav-link" href="{{ path('scoville_index') }}"><span class="h6">Scoville</span></a>
+      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</span></a>
+      {% if app.user %}
+						<a class="nav-item nav-link" href="{{ path('logout') }}"><span class="h6">Déconnexion</span></a>
+					{% else %}
+						<a class="nav-item nav-link" href="{{ path('login') }}"><span class="h6">Connexion</span></a>
+						<a class="nav-item nav-link" href="{{ path('register') }}"><span class="h6">Inscription</span></a>
+					{% endif %}
+				</li>
+        {% if (is_granted('ROLE_ADMIN')) %}
+					<a class="nav-item">
+						<a class="nav-item nav-link" href="{{ path('admin_index') }}"><span class="h6">Admin</span></a>
+					</a>
+          {% endif %}
+    </div>
   </div>
 </nav>

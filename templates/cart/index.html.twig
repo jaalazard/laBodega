@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<h1 class="my-5 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="text-center">Produit</th>
+						<th class="text-center">Prix</th>
+						<th class="text-center">Quantité</th>
+						<th class="text-center">Total</th>
+						<th class="text-center">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for element in dataCart %}
+						<tr>
+							<td class="text-center">{{ element.pimento.name }}</td>
+							<td class="text-center">{{ element.pimento.price }}€</td>
+							<td class="text-center">{{ element.quantity }}</td>
+							<td class="text-center">{{ element.quantity * element.pimento.price }}€</td>
+							<td class="text-center">
+								<a href="{{ path('cart_add', {id: element.pimento.id})}}" class="btn btn-success">+1
+									{{ include('icons/cartPlus.svg') }}</a>
+								<a href="{{ path('cart_remove', {id: element.pimento.id})}}" class="btn btn-warning">-1
+									{{ include('icons/cartLess.svg') }}</a>
+								<a href="{{ path('cart_delete', {id: element.pimento.id})}}" class="btn btn-danger">Supprimer
+									{{ include('icons/cartDelete.svg') }}</a>
+
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Votre panier est vide</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="text-center">Total</td>
+						<td class="text-center">{{ total }}€</td>
+						<td class="text-end">
+							<a href="{{ path('cart_delete_all')}}" class="btn btn-danger">Vider le panier
+								{{ include('icons/cartDelete.svg') }}</a>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+{% endblock %}

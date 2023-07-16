@@ -2,47 +2,37 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
-use App\Entity\User;
-use Doctrine\Persistence\ObjectManager;
+use App\ENtity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserFixtures extends Fixture implements DependentFixtureInterface
+
+class UserFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
+
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        $faker = Factory::create('fr_FR');
-
-        for ($i = 0; $i < CountryFixtures::NB_COUNTRY; $i++) {
-            $user = new User();
-            $user->setEmail($faker->email());
-            $user->setFirstname($faker->firstName());
-            $user->setLastname($faker->lastName());
-            $user->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
-            ));
-
-            $manager->persist($user);
-        }
-
-            $user = new User();
-            $user->setEmail('bidon@bidon.fr');
-            $user->setFirstname('Jean-Michel');
-            $user->setLastname('Bidon');
-            $user->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
-            ));
-
-            $manager->persist($user);
-
-        $manager->flush();
+        $this->passwordHasher = $passwordHasher;
     }
 
-    public function getDependencies()
+    public function load(ObjectManager $manager): void
     {
-        return [
-            CountryFixtures::class,
-        ];
+        $user = new User();
+        $user->setEmail('candidate@example.com');
+        $hashedPassword = $this->passwordHasher->hashPassword($user, 'candidatepassword');
+        $user->setPassword($hashedPassword);
+        $manager->persist($user);
+
+
+        $admin = new User();
+        $admin->setEmail('admin@example.com');
+        $hashedPassword = $this->passwordHasher->hashPassword($admin, 'adminpassword');
+        $admin->setPassword($hashedPassword);
+        $admin->setRoles(['ROLE_ADMIN']);
+        $manager->persist($admin);
+        $manager->flush();
     }
 }

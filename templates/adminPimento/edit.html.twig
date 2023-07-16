@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Pimento
+{% endblock %}
+
+{% block body %}
+	<h1 class="my-5 text-dark text-center fw-bolder">Modifier une référence</h1>
+
+	{{ include('pimento/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

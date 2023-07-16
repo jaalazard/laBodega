@@ -18,15 +18,15 @@ class Country
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'country', targetEntity: User::class)]
-    private Collection $users;
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Client::class)]
+    private Collection $clients;
 
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Pimento::class)]
     private Collection $pimentos;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->clients = new ArrayCollection();
         $this->pimentos = new ArrayCollection();
     }
 
@@ -48,29 +48,29 @@ class Country
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Client>
      */
-    public function getUsers(): Collection
+    public function getClients(): Collection
     {
-        return $this->users;
+        return $this->clients;
     }
 
-    public function addUser(User $user): static
+    public function addClient(Client $client): static
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->setCountry($this);
+        if (!$this->clients->contains($client)) {
+            $this->clients->add($client);
+            $client->setCountry($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): static
+    public function removeClient(Client $client): static
     {
-        if ($this->users->removeElement($user)) {
+        if ($this->clients->removeElement($client)) {
             // set the owning side to null (unless already changed)
-            if ($user->getCountry() === $this) {
-                $user->setCountry(null);
+            if ($client->getCountry() === $this) {
+                $client->setCountry(null);
             }
         }
 
