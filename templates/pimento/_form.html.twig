@@ -1,0 +1,33 @@
+<div class="form w-50 mx-auto">
+	{{ form_start(form) }}
+
+	<div class="errors">
+		{{ form_errors(form) }}
+	</div>
+
+	<div class="form-row fw-bold">
+		{{ form_row(form.name) }}
+	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.price) }}
+	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.description) }}
+	</div>
+
+	<div class="form-row fw-bold">
+		{{ form_row(form.strength) }}
+	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.color) }}
+	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.country) }}
+	</div>
+	<div class="text-center d-flex justify-content-evenly ">
+		<button class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Valider</button>
+		<a href="{{ path('admin_pimento_index')}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
+
+	</div>
+	{{ form_end(form) }}
+</div>

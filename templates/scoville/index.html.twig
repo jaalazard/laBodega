@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent()}}
+{% endblock %}
+
+{% block title %}Wild Pimentos
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="row mt-5 g-5 mb-5">
+			<div class="col-6">
+				<h1 class="mb-5 fw-bolder">L'Échelle de Scoville</h1>
+				<h2 class="h2 fw-bold mt-5">Le principe</h2>
+				<p class="h6 font-italic">
+					Le principe de l’échelle de scoville est de préparer une solution de piments frais réduit en purée
+										et de la mélanger avec de l’eau sucrée. Les solutions sont goûtées par 5 personnes
+										et tant que la sensation de brûlure persiste on poursuit la dilution. 
+										Par exemple le piment de Cayenne doit être dilué entre 30 et 50 000 fois pour
+										ne plus ressentir la sensation de brûlure selon l’échelle de Scoville.
+				</p>
+				<h2 class="h2 fw-bold mt-5">Pourquoi Scoville ?</h2>
+
+
+				<p class="h6 font-italic">Wilbur Lincoln Scoville est un pharmacologue du siècle dernier.
+										En 1912 il a mis au point un système afin de mesurer la force des piments appelé échelle de Scoville.
+										L’intérêt est de mesurer la quantité de capsaïcine contenu dans chaque variété de piment et d’en mesurer
+										 ainsi la force.
+				</p>
+
+
+				<p class="h6 font-italic">
+					Wilbur Lincoln Scoville, né le 22 janvier 1865 à Bridgeport, au Connecticut, et mort le 10 mars 1942 à Gainesville, en Floride, est un pharmacien américain.
+										Biographie
+										Il est principalement connu pour avoir mis au point en 1912 l'échelle qui porte son nom (« The Scoville Organoleptic Test ») mesurant la force des piments.
+										En 1912, ses travaux le conduisent à étudier la pipérine, qui est la molécule présente dans le poivre et à l'origine de la sensation de piquant. Ce n'est qu'après qu'il s'intéresse à la capsaïcine qui provoque, elle, une sensation de chaleur1.
+										Ses recherches ont été effectuées lors de sa carrière au sein de la société pharmaceutique Parke-Davis de Détroit (fusionnée plus tard avec Pfizer).
+										Prix, honneurs et récompenses
+										De l'American Pharmaceutical Association (APhA) :
+										    Prix Ebert en 1922.
+										    Médaille d'honneur de Remington remise en 19292 (la plus haute distinction décernée par l'APhA).
+										Il fut fait docteur honoris causa en sciences de l'université Columbia en 1929.
+										Publications
+										    The Art of Compounding, décliné en huit éditions et livre de référence en pharmacologie jusque dans les années soixante (1895)
+										    Extract and Perfumes (contenant des tables de multicapteur de formules)
+				</p>
+				<h2 class="h2 fw-bold mt-5">Le masochisme bénin</h2>
+
+
+				<p class="h6 font-italic">Le psychologue de l'université de Pennsylvanie Paul Rozin a développé cette théorie expliquant
+				les raisons pour lesquelles certains aiment manger épicé. Selon Rozin, le type de personnes attiré par la brûlure, est le mêmme
+				que ceux qui sont attirés par les sensations fortes. Dans les deux cas, l'inconfort initial se transformerait en plaisir
+				suite à un certain nombre d'expositions.
+				</p>
+			</div>
+			<div class="col-6"><img src="{{ asset('build/images/scoville.png') }}" class="img-fluid rounded" alt="Responsive image"></div>
+		</div>
+	</div>
+{% endblock %}
