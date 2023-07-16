@@ -247,6 +247,9 @@
     "symfony/ux-swup": {
         "version": "v2.10.0"
     },
+    "symfony/ux-turbo": {
+        "version": "v2.10.0"
+    },
     "symfony/ux-typed": {
         "version": "v2.10.0"
     },
