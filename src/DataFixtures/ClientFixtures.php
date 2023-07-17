@@ -14,13 +14,13 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < CountryFixtures::NB_COUNTRY; $i++) {
+        for ($i = 0; $i < count(CountryFixtures::COUNTRIES); $i++) {
             $client = new Client();
             $client->setEmail($faker->email());
             $client->setFirstname($faker->firstName());
             $client->setLastname($faker->lastName());
             $client->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
+                'country_' . $faker->numberBetween(0, count(CountryFixtures::COUNTRIES)-1)
             ));
 
             $manager->persist($client);
@@ -31,7 +31,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setFirstname('Jean-Michel');
             $client->setLastname('Bidon');
             $client->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
+                'country_' . $faker->numberBetween(0, count(CountryFixtures::COUNTRIES)-1)
             ));
 
             $manager->persist($client);
