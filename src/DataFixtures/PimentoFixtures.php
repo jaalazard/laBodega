@@ -27,8 +27,7 @@ class PimentoFixtures extends Fixture implements DependentFixtureInterface
             ));
             $pimento->setPrice($faker->numberBetween(10, 1000));
             $pimento->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
-            ));
+                'country_' . $faker->numberBetween(0, count(CountryFixtures::COUNTRIES)-1)));
             $pimento->setDescription($faker->text(200, 500));
             $manager->persist($pimento);
         }

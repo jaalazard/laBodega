@@ -24,6 +24,12 @@ class Country
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Pimento::class)]
     private Collection $pimentos;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $flag = null;
+
+    #[ORM\Column(length: 2)]
+    private ?string $code = null;
+
     public function __construct()
     {
         $this->clients = new ArrayCollection();
@@ -103,6 +109,30 @@ class Country
                 $pimento->setCountry(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFlag(): ?string
+    {
+        return $this->flag;
+    }
+
+    public function setFlag(?string $flag): static
+    {
+        $this->flag = $flag;
+
+        return $this;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): static
+    {
+        $this->code = $code;
 
         return $this;
     }
