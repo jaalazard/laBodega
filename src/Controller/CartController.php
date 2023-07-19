@@ -46,7 +46,7 @@ class CartController extends AbstractController
         }
         $sessionInterface->set('cart', $cart);
 
-        return $this->redirectToRoute('cart_index', ['user' => $user]);
+        return $this->redirectToRoute('pimento_index', ['user' => $user]);
     }
 
     #[Route('/remove/{id}', name: 'remove', methods: ['GET'])]
@@ -94,14 +94,26 @@ class CartController extends AbstractController
     public function delivery(): Response
     {
         $user = $this->getUser();
+        
         return $this->render('delivery/index.html.twig',['user' => $user]);
     }
 
-    #[Route('/paiement', name: 'payment', methods: ['GET'])]
+    #[Route('/paiement', name: 'payment_index', methods: ['GET'])]
     public function pay(SessionInterface $sessionInterface): Response
     {
         $user = $this->getUser();
-        $sessionInterface->remove("cart");
+
         return $this->render('payment/index.html.twig',['user' => $user]);
     }
+
+    #[Route('/paiement/confirmation', name: 'payment_confirmation', methods: ['GET'])]
+    public function paymentConfirmation(SessionInterface $sessionInterface): Response
+    {
+        $user = $this->getUser();
+        $sessionInterface->remove("cart");
+
+        return $this->redirectToRoute('home', ['user' => $user]);
+    }
+
+
 }

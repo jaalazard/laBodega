@@ -19,6 +19,16 @@ class UserController extends AbstractController
     public function profile(User $user, UserRepository $userRepository, Request $request): Response
     {
         $user = $this->getUser();
+        return $this->render('user/profile.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+
+    #[Route('/{id}/profil/modifier', name: 'profile_edit', methods: ['GET', 'POST'])]
+    public function profile_edit(User $user, UserRepository $userRepository, Request $request): Response
+    {
+        $user = $this->getUser();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -26,7 +36,7 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('home');
         }
-        return $this->render('user/profile.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

@@ -32,6 +32,7 @@ class UserType extends AbstractType
                     'class' => 'border-2 border-secondary',
                 ]])
             ->add('addressComplement', TextType::class, [
+                'required' => false,
                 'label' => 'Complément',
                 'attr' => [
                     'class' => 'border-2 border-secondary',

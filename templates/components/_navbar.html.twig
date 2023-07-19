@@ -16,13 +16,12 @@
 						<a class="nav-item nav-link" href="{{ path('register') }}"><span class="h5">Inscription</span></a>
 					{% endif %}
         {% if (is_granted('ROLE_ADMIN')) %}
-					<a class="nav-item">
 						<a class="nav-item nav-link" href="{{ path('admin_index') }}"><span class="h5">Admin</span></a>
-					</a>
           {% endif %}
-          <a class="nav-item">
+                {% if app.user %}
 						<a class="nav-item nav-link" href="{{ path('cart_index') }}"><span class="h5">Mon panier {{ include('icons/cart.svg') }}</span></a>
-					</a>
+          {% endif %}
+
     </div>
   </div>
 </nav>
