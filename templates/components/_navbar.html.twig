@@ -8,7 +8,6 @@
       <a {{ stimulus_action('aieAieAie', 'aieAieAie') }} class="nav-item nav-link active" href="{{ path('home') }}"><span class="h5">Accueil</span></a>
       <a class="nav-item nav-link" href="{{ path('pimento_index') }}"><span class="h5">La boutique</span></a>
       <a class="nav-item nav-link" href="{{ path('scoville_index') }}"><span class="h5">Scoville</span></a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</span></a>
       {% if app.user %}
 						<a class="nav-item nav-link" href="{{ path('logout') }}"><span class="h5">Déconnexion</span></a>
 					{% else %}

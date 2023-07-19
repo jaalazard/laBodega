@@ -2,10 +2,17 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use App\Repository\PimentoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PimentoRepository::class)]
+#[Vich\Uploadable]
 class Pimento
 {
     #[ORM\Id]
@@ -33,6 +40,19 @@ class Pimento
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $poster = null;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'poster')]
+    #[Assert\File(
+        maxSize: '1M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DatetimeInterface $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -109,5 +129,31 @@ class Pimento
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getPoster(): ?string
+    {
+        return $this->poster;
+    }
+
+    public function setPoster(?string $poster): self
+    {
+        $this->poster = $poster;
+        return $this;
+    }
+
+    public function setPosterFile(File $image = null): Pimento
+    {
+        $this->posterFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
     }
 }

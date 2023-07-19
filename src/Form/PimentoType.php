@@ -11,6 +11,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+
 
 class PimentoType extends AbstractType
 {
@@ -59,6 +61,9 @@ class PimentoType extends AbstractType
                     'class' => 'border-2 border-secondary',
                 ]
 
+            ])
+            ->add('posterFile', VichFileType::class,[
+                'required' => false
             ]);
     }
 

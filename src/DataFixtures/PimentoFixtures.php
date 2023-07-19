@@ -21,6 +21,7 @@ class PimentoFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < count(self::PIMENTOS); $i++) {
             $pimento = new Pimento();
             $pimento->setName(self::PIMENTOS[$i]);
+            $pimento->setPoster('x');
             $pimento->setStrength($this->getReference('strength_' . $faker->numberBetween(0, count(StrengthFixtures::SCOVILLE) - 1)));
             $pimento->setColor($this->getReference(
                 'color_' . $faker->numberBetween(0, count(ColorFixtures::COLORS) - 1)
