@@ -13,6 +13,7 @@
 	<h1 class="text-center mt-5 text-dark fw-bold">Mettez du piment dans votre vie !</h1>
 	<ul class="row g-3 d-flex justify-content-center mt-5">
 		{% for pimento in pimentos %}
+		{% if pimento.stock > 0 %}
 			<div class="card mx-3 bg-secondary px-0" style="width: 21rem;">
 				<img class="card-img-top rounded w-100" src="{{ asset('build/images/pimento.jpg') }}" alt="{{ pimento.name }}">
 				<div class="card-body">
@@ -25,6 +26,7 @@
 					<a href="{{ path('cart_add', {'id': pimento.id}) }}" class="btn btn-outline border-2 border-primary mx-auto card-link btn-sm  text-primary fw-bold rounded text-decoration-none w-50">Acheter</a>
 				</div>
 			</div>
+			{% endif %}
 		{% endfor %}
 	</ul>
 </div>

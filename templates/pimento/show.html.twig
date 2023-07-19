@@ -21,7 +21,7 @@
 					<li class="list-group-item bg-secondary h5 mb-3">Prix :
 						{{ pimento.price }}€/kg</li>
 					<li class="list-group-item bg-secondary h5">Origine :
-						{{ pimento.country.name }} <img src="{{ pimento.country.flag }}" alt"{{ pimento.country.name.flag }}"</li>
+						{{ pimento.country }} <img alt"{{ pimento.country }}"</li>
 				</ul>
 				<div class="d-flex justify-content-around my-5">
 					<a class="btn btn-outline border-2 border-primary mx-auto card-link btn-sm  text-primary fw-bold rounded text-decoration-none w-25" href="{{ path('pimento_index') }}">Retour</a>

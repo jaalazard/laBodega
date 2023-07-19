@@ -21,22 +21,27 @@ class Pimento
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?float $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'pimentos')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private ?Strength $strength = null;
 
     #[ORM\ManyToOne(inversedBy: 'pimentos')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private ?Color $color = null;
 
-    #[ORM\ManyToOne(inversedBy: 'pimentos')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Country $country = null;
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    private ?string $country = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
@@ -53,6 +58,9 @@ class Pimento
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DatetimeInterface $updatedAt = null;
+
+    #[ORM\Column]
+    private ?int $stock = null;
 
     public function getId(): ?int
     {
@@ -107,12 +115,12 @@ class Pimento
         return $this;
     }
 
-    public function getCountry(): ?Country
+    public function getCountry(): ?String
     {
         return $this->country;
     }
 
-    public function setCountry(?Country $country): static
+    public function setCountry(string $country): static
     {
         $this->country = $country;
 
@@ -155,5 +163,17 @@ class Pimento
     public function getPosterFile(): ?File
     {
         return $this->posterFile;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): static
+    {
+        $this->stock = $stock;
+
+        return $this;
     }
 }
