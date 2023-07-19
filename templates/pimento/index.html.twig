@@ -11,6 +11,14 @@
 {% block body %}
 <div class="container-fluid">
 	<h1 class="text-center mt-5 text-dark fw-bold">Mettez du piment dans votre vie !</h1>
+
+<div class="w-50">
+{{ form_start(form)}}
+{{ form_widget(form)}}
+<button class="btn btn-secondary border-2 border-primary mx-auto card-link btn-sm  text-primary fw-bold rounded text-decoration-none w-50">Rechercher</button>
+{{ form_end(form)}}
+</div>
+
 	<ul class="row g-3 d-flex justify-content-center mt-5">
 		{% for pimento in pimentos %}
 		{% if pimento.stock > 0 %}

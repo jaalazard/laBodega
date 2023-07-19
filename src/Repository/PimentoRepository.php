@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Pimento;
+use App\Entity\PimentoSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,28 +40,47 @@ class PimentoRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Pimento[] Returns an array of Pimento objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function searchPimento(PimentoSearch $pimentoSearch): array
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        if($pimentoSearch->getSearch()){
+            $queryBuilder->andWhere('p.name LIKE :search')
+            ->setParameter('search', '%' . $pimentoSearch->getSearch() . '%');
+        }
+        if($pimentoSearch->getMinPrice()){
+            $queryBuilder->andWhere('p.price > :minPrice')
+            ->setParameter('minPrice', $pimentoSearch->getMinPrice());
+        }
+        if($pimentoSearch->getMaxPrice()){
+            $queryBuilder->andWhere('p.price < :maxPrice')
+            ->setParameter('maxPrice', $pimentoSearch->getMaxPrice());
+        }
+        return $queryBuilder->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Pimento
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Pimento[] Returns an array of Pimento objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('p.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Pimento
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

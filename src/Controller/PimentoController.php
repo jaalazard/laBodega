@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Pimento;
+use App\Entity\PimentoSearch;
+use App\Form\PimentoSearchType;
 use App\Form\PimentoType;
 use App\Repository\PimentoRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,11 +16,20 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/pimento')]
 class PimentoController extends AbstractController
 {
-    #[Route('/', name: 'pimento_index', methods: ['GET'])]
-    public function index(PimentoRepository $pimentoRepository): Response
+    #[Route('/', name: 'pimento_index')]
+    public function index(PimentoRepository $pimentoRepository, Request $request): Response
     {
+        $pimentoSearch = new PimentoSearch();
+        $form = $this->createForm(PimentoSearchType::class, $pimentoSearch);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pimentos = $pimentoRepository->searchPimento($pimentoSearch);
+        } else {
+            $pimentos = $pimentoRepository->findAll();
+        }
         return $this->render('pimento/index.html.twig', [
-            'pimentos' => $pimentoRepository->findAll(),
+            'pimentos' => $pimentos,
+            'form' => $form,
         ]);
     }
 
