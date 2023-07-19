@@ -14,6 +14,13 @@ class PimentoSearch
     #[Assert\Positive()]
     private ?int $maxPrice = null;
 
+    private ?Color $color = null;
+
+    private ?Strength $minStrength = null;
+    private ?Strength $maxStrength = null;
+
+
+
     /**
      * Get the value of search
      *
@@ -74,6 +81,57 @@ class PimentoSearch
     public function setMaxPrice($maxPrice)
     {
         $this->maxPrice = $maxPrice;
+
+        return $this;
+    }
+ 
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set the value of color
+     *
+     * @return  self
+     */ 
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getMinStrength()
+    {
+        return $this->minStrength;
+    }
+
+    /**
+     * Set the value of minStrength
+     *
+     * @return  self
+     */ 
+    public function setMinStrength($minStrength)
+    {
+        $this->minStrength = $minStrength;
+
+        return $this;
+    }
+
+    public function getMaxStrength()
+    {
+        return $this->maxStrength;
+    }
+
+    /**
+     * Set the value of maxStrength
+     *
+     * @return  self
+     */ 
+    public function setMaxStrength($maxStrength)
+    {
+        $this->maxStrength = $maxStrength;
 
         return $this;
     }

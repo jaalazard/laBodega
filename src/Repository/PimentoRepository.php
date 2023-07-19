@@ -55,6 +55,18 @@ class PimentoRepository extends ServiceEntityRepository
             $queryBuilder->andWhere('p.price < :maxPrice')
             ->setParameter('maxPrice', $pimentoSearch->getMaxPrice());
         }
+        if($pimentoSearch->getColor()){
+            $queryBuilder->andWhere('p.color = :color')
+            ->setParameter('color', $pimentoSearch->getColor());
+        }
+        if($pimentoSearch->getMinStrength()){
+            $queryBuilder->andWhere('p.strength > :minStrength')
+            ->setParameter('minStrength', $pimentoSearch->getMinStrength());
+        }
+        if($pimentoSearch->getMaxStrength()){
+            $queryBuilder->andWhere('p.strength < :maxStrength')
+            ->setParameter('maxStrength', $pimentoSearch->getMaxStrength());
+        }
         return $queryBuilder->getQuery()
             ->getResult();
     }
