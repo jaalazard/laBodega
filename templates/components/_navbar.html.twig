@@ -10,6 +10,7 @@
       <a class="nav-item nav-link" href="{{ path('scoville_index') }}"><span class="h5">Scoville</span></a>
       {% if app.user %}
 						<a class="nav-item nav-link" href="{{ path('logout') }}"><span class="h5">Déconnexion</span></a>
+            <a class="nav-item nav-link" href="{{ path('user_profile', {'id': app.user.id}) }}"><span class="h5">Mon profil</span></a>
 					{% else %}
 						<a class="nav-item nav-link" href="{{ path('login') }}"><span class="h5">Connexion</span></a>
 						<a class="nav-item nav-link" href="{{ path('register') }}"><span class="h5">Inscription</span></a>
