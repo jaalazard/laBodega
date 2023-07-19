@@ -15,8 +15,7 @@ class Strength
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?int $name = null;
 
     #[ORM\OneToMany(mappedBy: 'strength', targetEntity: Pimento::class)]
     private Collection $pimentos;
@@ -31,12 +30,12 @@ class Strength
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): ?int
     {
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(int $name): static
     {
         $this->name = $name;
 

@@ -15,7 +15,7 @@
 <div class="w-50 mx-auto my-5">
 {{ form_start(form)}}
 {{ form_widget(form)}}
-<button class="btn btn-secondary border-2 border-primary mx-auto card-link btn-sm  text-primary fw-bold rounded text-decoration-none w-25">Rechercher</button>
+<button class="btn btn-secondary border-2 border-primary card-link btn-sm text-primary fw-bold rounded text-decoration-none w-25">Rechercher</button>
 {{ form_end(form)}}
 </div>
 
@@ -26,6 +26,9 @@
 				<img class="card-img-top rounded w-100" src="{{ asset('build/images/pimento.jpg') }}" alt="{{ pimento.name }}">
 				<div class="card-body">
 					<h5 class="card-title text-center mb-4">{{ pimento.name }}</h5>
+					{% if intval(pimento.strength) < 2000 %}
+					<h6> {{ include('icons/fire.svg') }}  </h6
+					{% endif %}
 					<p class="card-text fst-italic h5 mb-4">{{ pimento.description|u.truncate(50, '...') }}</p>
 					<p class="list-group-item bg-secondary h5">Prix : {{ pimento.price }}€/kg</p>
 				</div>
