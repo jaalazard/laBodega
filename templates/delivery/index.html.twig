@@ -12,31 +12,31 @@
 			</div>
 			<div class="form-group mb-2 col-md-6">
 				<label class="fw-bold" for="firstname">Prénom</label>
-				<input type="text" class="form-control" id="firstname">
+				<input type="text" class="form-control" id="firstname" value="{{ user.firstName }}">
 			</div>
 		</div>
 		<div class="form-row d-flex flex-column align-items-center">
 			<div class="form-group mb-2 col-md-6">
 				<label class="fw-bold" for="inputAddress">Adresse</label>
-				<input type="text" class="form-control" id="inputAddress">
+				<input type="text" class="form-control" id="inputAddress" value="{{ user.address }}">
 			</div>
 			<div class="form-group mb-2 col-md-6">
 				<label class="fw-bold" for="inputAddress2">Complément d'adresse</label>
-				<input type="text" class="form-control" id="inputAddress2">
+				<input type="text" class="form-control" id="inputAddress2" value="{{ user.addressComplement }}">
 			</div>
 		</div>
 		<div class="form-row d-flex flex-column align-items-center">
 			<div class="form-group mb-2 col-md-6">
 				<label class="fw-bold" for="inputCity">Ville</label>
-				<input type="text" class="form-control" id="inputCity">
+				<input type="text" class="form-control" id="inputCity" value="{{ user.city }}">
 			</div>
 			<div class="form-group mb-2 col-md-6">
 				<label class="fw-bold" for="inputZip">Code Postal</label>
-				<input type="text" class="form-control" id="inputZip">
+				<input type="text" class="form-control" id="inputZip" value="{{ user.zipCode }}">
 			</div>
 		</div>
 		<div class="form-row d-flex flex-column align-items-center">
-			<a href="{{ path('cart_payment')}}" class="btn btn-lg btn-secondary border-2 border-primary mx-auto card-link text-primary fw-bold rounded text-decoration-none w-25">Valider</button>
+			<a href="{{ path('cart_payment_index')}}" class="btn btn-lg btn-secondary border-2 border-primary mx-auto card-link text-primary fw-bold rounded text-decoration-none w-25">Valider</button>
 		</div>
 	</form>
 {% endblock %}

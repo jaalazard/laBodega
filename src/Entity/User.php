@@ -39,7 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $address = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $adressComplement = null;
+    private ?string $addressComplement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
@@ -153,14 +153,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdressComplement(): ?string
+    public function getAddressComplement(): ?string
     {
-        return $this->adressComplement;
+        return $this->addressComplement;
     }
 
-    public function setAdressComplement(?string $adressComplement): static
+    public function setAddressComplement(?string $addressComplement): static
     {
-        $this->adressComplement = $adressComplement;
+        $this->addressComplement = $addressComplement;
 
         return $this;
     }

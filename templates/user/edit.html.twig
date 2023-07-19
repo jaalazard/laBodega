@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de l'utilisateur
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent()}}
+{% endblock %}
+
+
+{% block body %}
+
+	<h1 class="fw-bolder text-center my-5">Mon profil</h1>
+	<h2 class="fw-bolder text-center my-5">Modifier mes informations</h2>
+
+
+	<section class="container">
+		<div class="d-flex justify-content-end position-relative">
+			{{ include('user/_form.html.twig') }}
+		</div>
+
+	{% endblock %}

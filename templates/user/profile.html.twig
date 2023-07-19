@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer mon profil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+
+			<h1 class="fw-bolder text-center my-5 text-dark">Mon profil</h1>
+			<h2 class="fw-bolder text-center my-5 text-dark">Mes informations</h2>
+			<ul class="text-center fw-bold text-dark list-unstyled">
+				<li>{{ user.firstName }}</li>
+				<li>{{ user.lastName }}</li>
+				<li>{{ user.address }}</li>
+				<li>{{ user.addressComplement }}</li>
+				<li>{{ user.city }}</li>
+				<li>{{ user.zipCode }}</li>
+			</ul>
+			<a href="{{ path('user_profile_edit', {'id': app.user.id })}}" class="btn btn-secondary w-25 w-md-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Mettre à jour</a>
+
+		</div>
+		<div class="row">
+					<h2 class="fw-bolder text-center my-5 text-dark">Mes commandes</h2>
+
+		</div>
+	</div>
+
+	<section class="container">
+		<div class="d-flex justify-content-end position-relative"></div>
+
+	{% endblock %}
