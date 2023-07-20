@@ -12,6 +12,7 @@ class PimentoSearch
     private ?int $minPrice = null;
 
     #[Assert\Positive()]
+    #[Assert\GreaterThan('minPrice', message: 'Le montant saisi doit être supérieur au montant minimum.',)]
     private ?int $maxPrice = null;
 
     private ?Color $color = null;

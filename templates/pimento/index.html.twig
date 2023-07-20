@@ -12,11 +12,26 @@
 	<div class="container-fluid">
 		<h1 class="text-center mt-5 text-dark fw-bold">Mettez du piment dans votre vie !</h1>
 
-		<div class="w-50 mx-auto my-5">
+		<div class="form w-75 mx-auto my-5">
 			{{ form_start(form)}}
-			{{ form_widget(form)}}
-			<button class="btn btn-secondary border-2 border-primary card-link btn-sm text-primary fw-bold rounded text-decoration-none w-75 mw-25">Rechercher</button>
+			<div class="errors">
+				{{ form_errors(form) }}
+			</div>
+			<div class="form-row fw-bold w-100">
+				{{ form_row(form.search) }}
+			</div>
+			<div class="form-row d-flex justify-content-center fw-bold">
+				<div class="w-50">{{ form_row(form.minPrice) }} </div><div class="w-50">{{ form_row(form.maxPrice) }}</div>
+			</div>
+			<div class="form-row d-flex justify-content-between fw-bold">
+				<div class="w-50 text-nowrap">{{ form_row(form.minStrength) }} </div><div class="w-50">{{ form_row(form.maxStrength) }}</div>
+			</div>
+			<div class="form-row d-flex justify-content-center fw-bold">
+				<div class="w-50 text-nowrap">{{ form_row(form.color) }}</div>
+				<button class="btn btn-secondary border-2 border-primary card-link btn-sm text-primary fw-bold rounded text-decoration-none w-50 mw-25">Rechercher</button>
 			{{ form_end(form)}}
+			</div>
+			
 		</div>
 
 		<ul class="row g-3 d-flex justify-content-center mt-5">

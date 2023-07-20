@@ -15,7 +15,7 @@
 			<h2 class="fw-bolder text-center mb-1 text-dark">Mes informations</h2>
 			<ul class="text-center fw-bold text-dark list-unstyled mb-1">
 				<li>{{ user.firstName }} {{ user.lastName }}</li>
-				<li>{{ user.address }}, {{ user.addressComplement }}, {{ user.zipCode }}{{ user.city }}</li>
+				<li>{{ user.address }}, {{ user.addressComplement }}, {{ user.zipCode }} {{ user.city }}</li>
 			</ul>
 			<a href="{{ path('user_profile_edit', {'id': app.user.id })}}" class="btn btn-secondary w-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Mettre à jour</a>
 

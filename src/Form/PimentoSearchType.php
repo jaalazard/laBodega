@@ -27,12 +27,14 @@ class PimentoSearchType extends AbstractType
             ])
             ->add('minPrice', NumberType::class, [
                 'required' => false,
+                'label' => 'Prix min',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
             ])
             ->add('maxPrice', NumberType::class, [
                 'required' => false,
+                'label' => 'Prix max',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
@@ -41,7 +43,7 @@ class PimentoSearchType extends AbstractType
                 'required' => false,
                 'class' => Strength::class,
                 'choice_label' => 'power',
-                'label' => 'Force min',
+                'label' => 'Scoville min',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
@@ -50,7 +52,7 @@ class PimentoSearchType extends AbstractType
                 'required' => false,
                 'class' => Strength::class,
                 'choice_label' => 'power',
-                'label' => 'Force max',
+                'label' => 'Scoville max',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
