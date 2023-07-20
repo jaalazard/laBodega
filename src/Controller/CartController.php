@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use DateTime;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -127,9 +128,11 @@ class CartController extends AbstractController
         $entityManager->flush($orderContent);
         }
 
+        $date = new \DateTime('now');
         $order = new Order();
         $order->setContent($orderContent);
         $order->setUser($user);
+        $order->setCreatedAt($date);
         $entityManager->persist($order);
         $entityManager->flush($order);
 

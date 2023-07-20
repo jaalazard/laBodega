@@ -28,12 +28,20 @@
 			<h2 class="fw-bolder text-center my-5 text-dark">Mes commandes</h2>
 			<ul class="text dark fw-bold text-center list-unstyled">
 				{% for order in orders %}
-					<li class="text-dark fw-bold">
+					<h3>
+						Commande du
+						{{ order.createdAt|date("m/d/Y") }}
+					</h3>
+					<ul>
 						{% for product in order.content.product %}
-							Produit : {{ product.name }} - Quantité : {{ order.content.quantity }} -
-						{% endfor %}
-					</li>
+							<li class="text-dark fw-bold">
+								{{ product.name }}
+								X
+								{{ order.content.quantity }}
+							{% endfor %}
+						</li>
 				{% endfor %}
+				    </ul>
 			</ul>
 		</div>
 	</div>
