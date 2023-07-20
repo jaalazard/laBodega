@@ -30,7 +30,7 @@
 				{% for order in orders %}
 					<li class="text-dark fw-bold">
 						{% for product in order.content.product %}
-							Produit : {{ product.name}} - Quantité : {{ order.content.quantity }} -
+							Produit : {{ product.name }} - Quantité : {{ order.content.quantity }} -
 						{% endfor %}
 					</li>
 				{% endfor %}
