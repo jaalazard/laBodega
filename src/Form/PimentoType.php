@@ -63,6 +63,8 @@ class PimentoType extends AbstractType
             ])
             ->add('posterFile', VichFileType::class,[
                 'required' => false,
+                'allow_delete'  => false,
+                'download_uri' => false,
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]

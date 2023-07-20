@@ -28,11 +28,9 @@
 														{% endfor %}
 
 					</tr>
-					{# <a href="{{ path('admin_pimento_edit', {'id': pimento.id}) }}">{{ include('icons/edit.svg') }}
-																						    {{ include('pimento/_delete_form.html.twig') }} #}
-
-					{# </a> #}
 			</tbody>
 		</table>
+					<a class="mx-auto btn btn-outline-secondary fw-bold w-25 mb-5 border-3 border-secondary" href="{{ path('admin_index') }}">Retour</a>
+
 	</div>
 {% endblock %}

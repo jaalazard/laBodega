@@ -69,7 +69,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'pimento_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'pimento_delete', methods: ['POST',])]
     public function delete(Request $request, Pimento $pimento, PimentoRepository $pimentoRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$pimento->getId(), $request->request->get('_token'))) {
