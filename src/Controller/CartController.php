@@ -133,6 +133,7 @@ class CartController extends AbstractController
         $order->setContent($orderContent);
         $order->setUser($user);
         $order->setCreatedAt($date);
+        $order->setReference($order->getUser()->getFirstName()[0] . $order->getUser()->getLastName()[0] . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9));
         $entityManager->persist($order);
         $entityManager->flush($order);
 

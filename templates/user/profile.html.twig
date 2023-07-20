@@ -9,35 +9,29 @@
 
 {% block body %}
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row text-center">
 
-			<h1 class="fw-bolder text-center my-5 text-dark">Mon profil</h1>
-			<h2 class="fw-bolder text-center my-5 text-dark">Mes informations</h2>
-			<ul class="text-center fw-bold text-dark list-unstyled">
-				<li>{{ user.firstName }}</li>
-				<li>{{ user.lastName }}</li>
-				<li>{{ user.address }}</li>
-				<li>{{ user.addressComplement }}</li>
-				<li>{{ user.city }}</li>
-				<li>{{ user.zipCode }}</li>
+			<h1 class="fw-bolder text-center mt-5 mb-3 text-dark">Mon profil</h1>
+			<h2 class="fw-bolder text-center mb-1 text-dark">Mes informations</h2>
+			<ul class="text-center fw-bold text-dark list-unstyled mb-1">
+				<li>{{ user.firstName }} {{ user.lastName }}</li>
+				<li>{{ user.address }}, {{ user.addressComplement }}, {{ user.zipCode }}{{ user.city }}</li>
 			</ul>
-			<a href="{{ path('user_profile_edit', {'id': app.user.id })}}" class="btn btn-secondary w-25 w-md-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Mettre à jour</a>
+			<a href="{{ path('user_profile_edit', {'id': app.user.id })}}" class="btn btn-secondary w-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Mettre à jour</a>
 
 		</div>
 		<div class="row">
-			<h2 class="fw-bolder text-center my-5 text-dark">Mes commandes</h2>
-			<ul class="text dark fw-bold text-center list-unstyled">
+			<h2 class="fw-bolder text-center mt-5 mb-2 text-dark">Mes commandes</h2>
+			<ul class="text dark fw-bold text-center list-unstyled mb-5">
 				{% for order in orders %}
-					<h3>
-						Commande du
+					<h3 class="text-center text-dark mt-3">
+						Commande {{order.reference }} du
 						{{ order.createdAt|date("m/d/Y") }}
 					</h3>
-					<ul>
+					<ul class="list-unstyled">
 						{% for product in order.content.product %}
 							<li class="text-dark fw-bold">
-								{{ product.name }}
-								X
-								{{ order.content.quantity }}
+								{{ product.name }} ({{ order.content.quantity }})
 							{% endfor %}
 						</li>
 				{% endfor %}

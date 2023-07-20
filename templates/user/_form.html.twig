@@ -23,9 +23,9 @@
 	<div class="form-row fw-bold" value="user.zipCode">
 		{{ form_row(form.zipCode) }}
 	</div>
-	<div class="text-center d-flex justify-content-evenly">
-		<button class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Valider</button>
-		<a href="{{ path('user_profile', {'id': app.user.id })}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
+	<div class="text-center d-flex">
+		<button class="btn btn-secondary w-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Valider</button>
+		<a href="{{ path('user_profile', {'id': app.user.id })}}" class="btn btn-secondary w-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Retour</a>
 	</div>
 	{{ form_end(form) }}
 </div>

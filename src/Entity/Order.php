@@ -27,6 +27,9 @@ class Order
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $reference = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,6 +67,18 @@ class Order
     public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): static
+    {
+        $this->reference = $reference;
 
         return $this;
     }
