@@ -8,22 +8,22 @@
 		{{ form_row(form.lastName) }}
 	</div>
 
-	<div class="form-row fw-bold" value="user.firsttName"">
+	<div class="form-row fw-bold" value="user.firstName">
 		{{ form_row(form.firstName) }}
 	</div>
-	<div class="form-row fw-bold" value="user.address"">
+	<div class="form-row fw-bold" value="user.address">
 		{{ form_row(form.address) }}
 	</div>
-	<div class="form-row fw-bold" value="user.addressComplement"">
+	<div class="form-row fw-bold" value="user.addressComplement">
 		{{ form_row(form.addressComplement) }}
 	</div>
-    <div class="form-row fw-bold" value="user.city"">
+    <div class="form-row fw-bold" value="user.city">
 		{{ form_row(form.city) }}
 	</div>
 	<div class="form-row fw-bold" value="user.zipCode">
 		{{ form_row(form.zipCode) }}
 	</div>
-	<div class="text-center d-flex justify-content-evenly ">
+	<div class="text-center d-flex justify-content-evenly">
 		<button class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Valider</button>
 		<a href="{{ path('user_profile', {'id': app.user.id })}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
 	</div>
