@@ -40,7 +40,7 @@ class PimentoSearchType extends AbstractType
             ->add('minStrength', EntityType::class, [
                 'required' => false,
                 'class' => Strength::class,
-                'choice_label' => 'name',
+                'choice_label' => 'power',
                 'label' => 'Force min',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
@@ -49,7 +49,7 @@ class PimentoSearchType extends AbstractType
             ->add('maxStrength', EntityType::class, [
                 'required' => false,
                 'class' => Strength::class,
-                'choice_label' => 'name',
+                'choice_label' => 'power',
                 'label' => 'Force max',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
