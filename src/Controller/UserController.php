@@ -18,9 +18,13 @@ class UserController extends AbstractController
     #[Route('/{id}/profil', name: 'profile', methods: ['GET', 'POST'])]
     public function profile(User $user, UserRepository $userRepository, Request $request): Response
     {
+        /**
+         * @var User $user
+         */
         $user = $this->getUser();
+        $orders = $user->getOrders();
         return $this->render('user/profile.html.twig', [
-            'user' => $user,
+            'user' => $user, 'orders' => $orders,
         ]);
     }
 

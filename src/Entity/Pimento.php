@@ -64,6 +64,14 @@ class Pimento
     #[ORM\Column]
     private ?int $stock = null;
 
+    #[ORM\ManyToMany(targetEntity: OrderContent::class, mappedBy: 'product')]
+    private Collection $orderContents;
+
+    public function __construct()
+    {
+        $this->orderContents = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -175,6 +183,33 @@ class Pimento
     public function setStock(int $stock): static
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderContent>
+     */
+    public function getOrderContents(): Collection
+    {
+        return $this->orderContents;
+    }
+
+    public function addOrderContent(OrderContent $orderContent): static
+    {
+        if (!$this->orderContents->contains($orderContent)) {
+            $this->orderContents->add($orderContent);
+            $orderContent->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderContent(OrderContent $orderContent): static
+    {
+        if ($this->orderContents->removeElement($orderContent)) {
+            $orderContent->removeProduct($this);
+        }
 
         return $this;
     }
