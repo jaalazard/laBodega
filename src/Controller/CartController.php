@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Order;
 use App\Entity\Pimento;
-use App\Repository\OrderRepository;
 use App\Repository\PimentoRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -49,7 +47,7 @@ class CartController extends AbstractController
         }
         $sessionInterface->set('cart', $cart);
 
-        return $this->redirectToRoute('cart_index', ['user' => $user]);
+        return $this->redirectToRoute('pimento_index', ['user' => $user]);
     }
 
     #[Route('/remove/{id}', name: 'remove', methods: ['GET'])]
@@ -97,6 +95,7 @@ class CartController extends AbstractController
     public function delivery(): Response
     {
         $user = $this->getUser();
+        
         return $this->render('delivery/index.html.twig',['user' => $user]);
     }
 
@@ -109,29 +108,13 @@ class CartController extends AbstractController
     }
 
     #[Route('/paiement/confirmation', name: 'payment_confirmation', methods: ['GET'])]
-    public function paymentConfirmation(SessionInterface $sessionInterface, PimentoRepository $pimentoRepository, OrderRepository $orderRepository): Response
+    public function paymentConfirmation(SessionInterface $sessionInterface, Request $request): Response
     {
-        $user = $this->getUser();
-        $cart = $sessionInterface->get('cart', []);
-        $date = new \DateTime();
-        $order = new Order;
-        $order->setDate($date->format('Y-m-d H:i:s'));
-        $order->setUser($user);
-
-        foreach ($cart as $id => $quantity) {
-            $pimento = $pimentoRepository->find($id);
-            $dataCart[] = [
-                'pimento' => $pimento,
-                'quantity' => $quantity
-            ];
-        $order->addProduct($pimento);
-        $order->setQuantity($quantity);
-        $orderRepository->save($order);
-        }
         $sessionInterface->remove("cart");
 
-        return $this->redirectToRoute('home', ['user' => $user]);
+        return $this->redirectToRoute('home');
     }
 
 
 }
+
