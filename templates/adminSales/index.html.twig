@@ -9,6 +9,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th class="text-center">Référence</th>
 					<th class="text-center">Date</th>
 					<th class="text-center">Client</th>
 					<th class="text-center">Détail de la commande</th>
@@ -17,20 +18,23 @@
 			<tbody>
 				{% for order in orders %}
 					<tr>
-					<td class="text-center">{{ order.createdAt|date("m/d/Y") }}</td>
+						<td class="text-center">{{ order.reference }}</td>
+
+						<td class="text-center">{{ order.createdAt|date("m/d/Y") }}</td>
 
 						<td class="text-center">{{ order.user.firstname }}
 							{{ order.user.lastname }}</td>
-						<td class="text-center">{% for product in order.content.product %}
+						<td class="text-center">
+							{% for product in order.content.product %}
 								{{ product.name }}({{ order.content.quantity }}),
-								{% endfor %}
-							</td>
-														{% endfor %}
+							{% endfor %}
+						</td>
+					{% endfor %}
 
-					</tr>
+				</tr>
 			</tbody>
 		</table>
-					<a class="mx-auto btn btn-outline-secondary fw-bold w-25 mb-5 border-3 border-secondary" href="{{ path('admin_index') }}">Retour</a>
+		<a class="mx-auto btn btn-outline-secondary fw-bold w-25 mb-5 border-3 border-secondary" href="{{ path('admin_index') }}">Retour</a>
 
 	</div>
 {% endblock %}
