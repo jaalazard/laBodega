@@ -5,7 +5,19 @@
 {% block body %}
 	<div class="container-fluid">
 		<div class="row my-5">
-			<h1 class="my-5 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
+			<h1 class="mt-5 mb-1 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
+
+			<div class="d-flex justify-content-around">
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentvert.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentjaune.png') }}" style="height: 240px; width: 300px; "/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentrouge.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+		</div>
 
 			<table class="table table-striped">
 				<thead>
