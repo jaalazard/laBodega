@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\OrderContent;
 use App\Repository\OrderRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -22,6 +23,9 @@ class Order
     #[ORM\OneToOne(inversedBy: 'command', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?OrderContent $content = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
 
     public function getId(): ?int
     {
@@ -48,6 +52,18 @@ class Order
     public function setContent(OrderContent $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

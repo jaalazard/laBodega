@@ -18,7 +18,7 @@
         {% if (is_granted('ROLE_ADMIN')) %}
 						<a class="nav-item nav-link" href="{{ path('admin_index') }}"><span class="h5">Admin</span></a>
           {% endif %}
-                {% if app.user %}
+                {% if app.user and not is_granted('ROLE_ADMIN') %}
 						<a class="nav-item nav-link" href="{{ path('cart_index') }}"><span class="h5">Mon panier {{ include('icons/cart.svg') }}</span></a>
           {% endif %}
 
