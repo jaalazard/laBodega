@@ -137,6 +137,15 @@ class CartController extends AbstractController
         $entityManager->persist($order);
         $entityManager->flush($order);
 
+        foreach($orderContent->getProduct() as $product){
+            $stock = $product->getStock();
+             $product->setStock($stock - ($orderContent->getQuantity()));
+             $entityManager->persist($product);
+             $entityManager->flush($product);
+
+        }
+        
+
         $sessionInterface->remove('cart');
         return $this->redirectToRoute('home');
     }
