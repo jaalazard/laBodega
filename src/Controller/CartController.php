@@ -2,7 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\Pimento;
+use App\Entity\User;
+use App\Entity\OrderContent;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\OrderContentRepository;
+use App\Repository\OrderRepository;
 use App\Repository\PimentoRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -96,6 +102,7 @@ class CartController extends AbstractController
     {
         $user = $this->getUser();
         
+        
         return $this->render('delivery/index.html.twig',['user' => $user]);
     }
 
@@ -108,10 +115,25 @@ class CartController extends AbstractController
     }
 
     #[Route('/paiement/confirmation', name: 'payment_confirmation', methods: ['GET'])]
-    public function paymentConfirmation(SessionInterface $sessionInterface, Request $request): Response
+    public function paymentConfirmation(SessionInterface $sessionInterface,  EntityManagerInterface $entityManager, PimentoRepository $pimentoRepository, OrderRepository $orderRepository, OrderContentRepository $orderContentRepository): Response
     {
-        $sessionInterface->remove("cart");
+        $user = $this->getUser();
+        $cart = $sessionInterface->get('cart', []);
+        $orderContent = new OrderContent();
+        foreach ($cart as $id => $quantity) {
+        $orderContent->addProduct($pimentoRepository->find($id));
+        $orderContent->setQuantity($quantity);
+        $entityManager->persist($orderContent);
+        $entityManager->flush($orderContent);
+        }
 
+        $order = new Order();
+        $order->setContent($orderContent);
+        $order->setUser($user);
+        $entityManager->persist($order);
+        $entityManager->flush($order);
+
+        $sessionInterface->remove('cart');
         return $this->redirectToRoute('home');
     }
 
