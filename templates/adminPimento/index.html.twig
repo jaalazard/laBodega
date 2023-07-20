@@ -10,26 +10,23 @@
 			<thead>
 				<tr>
 					<th class="text-center">Nom</th>
-					<th class="text-center">Prix</th>
-					<th class="text-center">Description</th>
 					<th class="text-center">Origine</th>
-					<th class="text-center">Couleur</th>
-					<th class="text-center">Force</th>
+					<th class="text-center">Prix</th>
+					<th class="text-center">En stock (kg)</th>
 					<th class="text-center">Actions</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				{% for pimento in pimentos %}
 					<tr>
 						<td class="text-center">{{ pimento.name }}</td>
+						<td class="text-center">{{ pimento.country }}</td>
 						<td class="text-center">{{ pimento.price }}</td>
-						<td>{{ pimento.description }}</td>
-						<td class="text-center">{{ pimento.country.name }}</td>
-						<td class="text-center">{{ pimento.color.name }}</td>
-						<td class="text-center">{{ pimento.strength.name }}</td>
+						<td class="text-center">{{ pimento.stock }}</td>
 						<td class="text-center">
 							<a href="{{ path('admin_pimento_edit', {'id': pimento.id}) }}">{{ include('icons/edit.svg') }}
-							    {{ include('pimento/_delete_form.html.twig') }}
+								{{ include('pimento/_delete_form.html.twig') }}
 
 							</a>
 						</td>

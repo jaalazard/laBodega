@@ -40,7 +40,7 @@ class PimentoType extends AbstractType
                 ]])
             ->add('strength', EntityType::class, [
                 'class' => Strength::class,
-                'choice_label' => 'name',
+                'choice_label' => 'power',
                 'label' => 'Indice Scoville',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
