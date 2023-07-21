@@ -35,8 +35,8 @@
 				<input type="text" class="form-control" id="inputZip" value="{{ user.zipCode }}">
 			</div>
 		</div>
-		<div class="form-row d-flex flex-column align-items-center">
-			<a href="{{ path('cart_payment_index')}}" class="btn btn-lg btn-secondary border-2 border-primary mx-auto card-link text-primary fw-bold rounded text-decoration-none w-25">Valider</button>
+		<div class="d-flex justify-content-center">
+			<a href="{{ path('cart_payment_index')}}" type="button" class="btn btn-secondary px-5 border-2 border-primary text-primary fw-bold rounded">Valider</a>
 		</div>
 	</form>
 {% endblock %}
