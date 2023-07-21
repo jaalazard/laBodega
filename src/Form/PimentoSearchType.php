@@ -43,7 +43,7 @@ class PimentoSearchType extends AbstractType
                 'required' => false,
                 'class' => Strength::class,
                 'choice_label' => 'power',
-                'label' => 'Scoville min',
+                'label' => 'Scoville max',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
@@ -52,7 +52,7 @@ class PimentoSearchType extends AbstractType
                 'required' => false,
                 'class' => Strength::class,
                 'choice_label' => 'power',
-                'label' => 'Scoville max',
+                'label' => 'Scoville min',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
