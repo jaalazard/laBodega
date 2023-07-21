@@ -34,26 +34,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private ?string $address = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $addressComplement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private ?string $city = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     #[Assert\Type('digit', message: 'La valeur {{ value }} n\'est pas correcte. Veuillez entrer un code postal.',)]
     private ?string $zipCode = null;
 
