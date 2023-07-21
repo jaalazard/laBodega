@@ -9,8 +9,10 @@
 
 
 {% block body %}
-	<div class="has-bg-img">
-		<h1 class="text-center mt-5 fw-bolder h1 text-dark" style="height: 5vh;" {{ stimulus_controller('symfony/ux-typed', { strings: [ 'Hola amigo !', 'Bienvenido !', 'Si te gustan los pimientos...', 'Este sitio es tuyo !', ], loop: true, showCursor: true, cursorChar: '✨', } ) }}></h1>
-		<img class="bg-img w-100" src="{{ asset('build/images/pimientas.jpg.webp') }}" alt="pimientas">
+	<div class="container-fluid">
+	<h1 class="position-absolute top-25 start-50 translate-middle text-center mt-5 fw-bolder h1 text-danger" style="height: 5vh;" {{ stimulus_controller('symfony/ux-typed', { strings: [ 'Hola amigo !', 'Bienvenido !', 'Si te gustan los pimientos...', 'Este sitio es tuyo !', ], loop: true, showCursor: true, cursorChar: '✨', } ) }}></h1>
+
+		<img class="w-100" src="{{ asset('build/images/pimientas.jpg.webp') }}" alt="pimientas">
+
 	</div>
 {% endblock %}

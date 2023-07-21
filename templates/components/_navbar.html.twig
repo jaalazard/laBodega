@@ -1,11 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary" {{ stimulus_controller('aieAieAie') }}>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<div class="container-md">
 	<a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('build/images/sombrero.svg') }}" style="height: 28px; width: 56px;"/></a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="navbar-nav">
-			<a {{ stimulus_action('aieAieAie', 'aieAieAie') }} class="nav-item nav-link active" href="{{ path('home') }}">
+			<a class="nav-item nav-link active" href="{{ path('home') }}">
 				<span class="h5">Accueil</span>
 			</a>
 			<a class="nav-item nav-link" href="{{ path('pimento_index') }}">
@@ -45,5 +46,6 @@
 			{% endif %}
 
 		</div>
+	</div>
 	</div>
 </nav>
