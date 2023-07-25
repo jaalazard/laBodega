@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use App\Repository\PimentoRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     #[Route('/{id}/profil', name: 'profile', methods: ['GET', 'POST'])]
-    public function profile(User $user, UserRepository $userRepository, Request $request): Response
+    public function profile(User $user): Response
     {
         /**
          * @var User $user
@@ -27,7 +25,6 @@ class UserController extends AbstractController
             'user' => $user, 'orders' => $orders,
         ]);
     }
-
 
     #[Route('/{id}/profil/modifier', name: 'profile_edit', methods: ['GET', 'POST'])]
     public function profile_edit(User $user, UserRepository $userRepository, Request $request): Response

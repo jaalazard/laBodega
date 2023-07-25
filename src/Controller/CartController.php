@@ -4,17 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\Pimento;
-use App\Entity\User;
 use App\Entity\OrderContent;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\OrderContentRepository;
 use App\Repository\OrderRepository;
 use App\Repository\PimentoRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use DateTime;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -108,7 +105,7 @@ class CartController extends AbstractController
     }
 
     #[Route('/paiement', name: 'payment_index', methods: ['GET'])]
-    public function pay(SessionInterface $sessionInterface): Response
+    public function pay(): Response
     {
         $user = $this->getUser();
 
@@ -116,7 +113,7 @@ class CartController extends AbstractController
     }
 
     #[Route('/paiement/confirmation', name: 'payment_confirmation', methods: ['GET'])]
-    public function paymentConfirmation(SessionInterface $sessionInterface,  EntityManagerInterface $entityManager, PimentoRepository $pimentoRepository, OrderRepository $orderRepository, OrderContentRepository $orderContentRepository): Response
+    public function paymentConfirmation(SessionInterface $sessionInterface,  EntityManagerInterface $entityManager, PimentoRepository $pimentoRepository): Response
     {
         $user = $this->getUser();
         $cart = $sessionInterface->get('cart', []);
