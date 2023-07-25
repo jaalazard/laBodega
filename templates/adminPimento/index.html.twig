@@ -5,33 +5,30 @@
 {% block body %}
 	<div class="container-fluid">
 		<h1 class="my-5 mx-auto text-center fw-bolder text-dark">Mon catalogue</h1>
+		<a href="{{ path('admin_index')}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
 
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th class="text-center">Nom</th>
-					<th class="text-center">Prix</th>
-					<th class="text-center">Description</th>
 					<th class="text-center">Origine</th>
-					<th class="text-center">Couleur</th>
-					<th class="text-center">Force</th>
+					<th class="text-center">Prix</th>
+					<th class="text-center">En stock (kg)</th>
 					<th class="text-center">Actions</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				{% for pimento in pimentos %}
 					<tr>
 						<td class="text-center">{{ pimento.name }}</td>
+						<td class="text-center">{{ pimento.country }}</td>
 						<td class="text-center">{{ pimento.price }}</td>
-						<td>{{ pimento.description }}</td>
-						<td class="text-center">{{ pimento.country.name }}</td>
-						<td class="text-center">{{ pimento.color.name }}</td>
-						<td class="text-center">{{ pimento.strength.name }}</td>
+						<td class="text-center">{{ pimento.stock }}</td>
 						<td class="text-center">
-							<a href="{{ path('admin_pimento_edit', {'id': pimento.id}) }}">{{ include('icons/edit.svg') }}
-							    {{ include('pimento/_delete_form.html.twig') }}
-
-							</a>
+							<a href="{{ path('admin_pimento_edit', {'id': pimento.id}) }}" class="btn w-25 w-md-25 fw-bold text-uppercase">{{ include('icons/edit.svg') }}</a>
+							<a class="btn w-25 w-md-25 fw-bold text-uppercase">
+				{{ include('pimento/_delete_form.html.twig') }}</a>
 						</td>
 					</tr>
 				{% else %}
@@ -41,5 +38,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
+				<a href="{{ path('admin_index')}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
+
 	</div>
 {% endblock %}

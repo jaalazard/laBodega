@@ -7,10 +7,13 @@ use App\Entity\Country;
 use App\Entity\Pimento;
 use App\Entity\Strength;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class PimentoType extends AbstractType
 {
@@ -37,7 +40,7 @@ class PimentoType extends AbstractType
                 ]])
             ->add('strength', EntityType::class, [
                 'class' => Strength::class,
-                'choice_label' => 'name',
+                'choice_label' => 'power',
                 'label' => 'Indice Scoville',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
@@ -51,14 +54,26 @@ class PimentoType extends AbstractType
                     'class' => 'border-2 border-secondary',
                 ]
             ])
-            ->add('country', EntityType::class, [
-                'class' => Country::class,
-                'choice_label' => 'name',
+            ->add('country', CountryType::class, [
                 'label' => 'Origine',
                 'attr' => [
                     'class' => 'border-2 border-secondary',
                 ]
 
+            ])
+            ->add('posterFile', VichFileType::class,[
+                'required' => false,
+                'allow_delete'  => false,
+                'download_uri' => false,
+                'attr' => [
+                    'class' => 'border-2 border-secondary',
+                ]
+            ])
+            ->add('stock', NumberType::class, [
+                'label' => 'Kilos en stock',
+                'attr' => [
+                    'class' => 'border-2 border-secondary',
+                ]
             ]);
     }
 

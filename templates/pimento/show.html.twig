@@ -8,21 +8,52 @@
 		<h1 class="text-center mt-5">{{ pimento.name }}</h1>
 		<div class="row">
 			<div class="card bg-secondary mx-auto px-0" style="width: 50rem;">
-				<img class="card-img-top rounded" src="{{ asset('build/images/pimento.jpg') }}" alt="Card image cap">
+				<img class="card-img-top rounded" {% if pimento.poster %} src="{{ asset('uploads/images/pimento/') ~ pimento.poster }}" 
+				{% else %} src="{{ asset('build/images/pimento.jpg')}}" {% endif %} alt="pimento.name">
 				<div class="card-body">
 					<h5 class="card-title text-center">{{ pimento.name }}</h5>
+					{% if pimento.strength.power < 2000 %}
+								<h6 class="text-center mt-1 mb-3">
+									{{ include('icons/fire.svg') }}
+								</h6>
+							{% elseif pimento.strength.power >= 2000 and pimento.strength.power < 50000 %}
+								<h6 class="text-center mt-1 mb-3">
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+								</h6>
+							{% elseif pimento.strength.power >= 50000 and pimento.strength.power < 1000000 %}
+								<h6 class="text-center mt-1 mb-3">
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+								</h6>
+							{% elseif pimento.strength.power >= 1000000 and pimento.strength.power < 1500000 %}
+								<h6 class="text-center mt-1 mb-3">
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+								</h6>
+							{% elseif pimento.strength.power >= 1500000 %}
+								<h6 class="text-center mt-1 mb-3">
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+									{{ include('icons/fire.svg') }}
+								</h6>
+							{% endif %}
 					<p class="card-text fst-italic h5 my-5">{{ pimento.description }}</p>
 				</div>
 				<ul>
 					<li class="list-group-item bg-secondary h5 mb-3">Indice Scoville :
-						{{ pimento.strength.name }}</li>
+						{{ pimento.strength.power}}</li>
 					<li class="list-group-item bg-secondary h5 mb-3">Famille : Piment
 						{{ pimento.color.name }}</li>
 					<li class="list-group-item bg-secondary h5 mb-3">Prix :
 						{{ pimento.price }}€/kg</li>
 					<li class="list-group-item bg-secondary h5">Origine :
-						{{ pimento.country.name }}</li>
-
+						{{ pimento.country }} <img src="https://flagsapi.com/.{{ pimento.country }}./shiny/64.png" alt"{{ pimento.country }}"</li>
 				</ul>
 				<div class="d-flex justify-content-around my-5">
 					<a class="btn btn-outline border-2 border-primary mx-auto card-link btn-sm  text-primary fw-bold rounded text-decoration-none w-25" href="{{ path('pimento_index') }}">Retour</a>

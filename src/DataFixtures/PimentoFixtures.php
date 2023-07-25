@@ -26,10 +26,9 @@ class PimentoFixtures extends Fixture implements DependentFixtureInterface
                 'color_' . $faker->numberBetween(0, count(ColorFixtures::COLORS) - 1)
             ));
             $pimento->setPrice($faker->numberBetween(10, 1000));
-            $pimento->setCountry($this->getReference(
-                'country_' . $faker->numberBetween(0, CountryFixtures::NB_COUNTRY-1)
-            ));
+            $pimento->setCountry($faker->country());
             $pimento->setDescription($faker->text(200, 500));
+            $pimento->setStock($faker->numberBetween(0, 50));
             $manager->persist($pimento);
         }
         $manager->flush();

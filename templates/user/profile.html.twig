@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer mon profil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent()}}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row text-center">
+
+			<h1 class="fw-bolder text-center mt-5 mb-2 text-dark">Mon profil</h1>
+
+			<div class="d-flex justify-content-around">
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentvert.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentjaune.png') }}" style="height: 240px; width: 300px; "/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentrouge.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+		</div>
+
+			<h2 class="fw-bolder text-center mb-1 text-dark">Mes informations</h2>
+			<ul class="text-center fw-bold text-dark list-unstyled mb-1">
+				<li>{{ user.firstName }} {{ user.lastName }}</li>
+				<li>{{ user.address }}, {{ user.addressComplement }}, {{ user.zipCode }} {{ user.city }}</li>
+			</ul>
+			<a href="{{ path('user_profile_edit', {'id': app.user.id })}}" class="btn btn-secondary w-25 mx-auto fw-bold text-uppercase border-1 border-secondary">Mettre à jour</a>
+
+		</div>
+		<div class="row">
+			<h2 class="fw-bolder text-center mt-5 mb-2 text-dark">Mes commandes</h2>
+			<ul class="text dark fw-bold text-center list-unstyled mb-5">
+				{% for order in orders %}
+					<h3 class="text-center text-dark mt-3">
+						Commande {{order.reference }} du
+						{{ order.createdAt|date("m/d/Y") }}
+					</h3>
+					<ul class="list-unstyled">
+						{% for product in order.content.product %}
+							<li class="text-dark fw-bold">
+								{{ product.name }} ({{ order.content.quantity }})
+							{% endfor %}
+						</li>
+				{% endfor %}
+				    </ul>
+			</ul>
+		</div>
+	</div>
+
+	<section class="container">
+		<div class="d-flex justify-content-end position-relative"></div>
+
+	{% endblock %}

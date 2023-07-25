@@ -4,8 +4,20 @@
 {% endblock %}
 {% block body %}
 	<div class="container-fluid">
-		<div class="row">
-			<h1 class="my-5 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
+		<div class="row my-5">
+			<h1 class="mt-5 mb-1 mx-auto text-center fw-bolder text-dark">Mon panier</h1>
+
+			<div class="d-flex justify-content-around">
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentvert.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentjaune.png') }}" style="height: 240px; width: 300px; "/>
+			</a>
+			<a href="{{ path('admin_pimento_new') }}">
+				<img src="{{ asset('build/images/pimentrouge.png') }}" style="height: 240px; width: 300px;"/>
+			</a>
+		</div>
 
 			<table class="table table-striped">
 				<thead>
@@ -42,9 +54,11 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td class="text-center">Total</td>
+						<td class="text-center fw-bolder">Total</td>
 						<td class="text-center">{{ total }}€</td>
 						<td class="text-end">
+						<a href="{{ path('cart_delivery')}}" class="btn btn-success">Valider et payer
+								{{ include('icons/coin.svg') }}</a>
 							<a href="{{ path('cart_delete_all')}}" class="btn btn-danger">Vider le panier
 								{{ include('icons/cartDelete.svg') }}</a>
 						</td>

@@ -14,7 +14,6 @@
 	<div class="form-row fw-bold">
 		{{ form_row(form.description) }}
 	</div>
-
 	<div class="form-row fw-bold">
 		{{ form_row(form.strength) }}
 	</div>
@@ -24,10 +23,15 @@
 	<div class="form-row fw-bold">
 		{{ form_row(form.country) }}
 	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.posterFile) }}
+	</div>
+	<div class="form-row fw-bold">
+		{{ form_row(form.stock) }}
+	</div>
 	<div class="text-center d-flex justify-content-evenly ">
 		<button class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Valider</button>
-		<a href="{{ path('admin_pimento_index')}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
-
+		<a href="{{ path('admin_index')}}" class="btn btn-secondary w-25 w-md-25 fw-bold text-uppercase border-1 border-secondary">Retour</a>
 	</div>
 	{{ form_end(form) }}
 </div>
