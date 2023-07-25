@@ -8,7 +8,8 @@
 		<h1 class="text-center mt-5">{{ pimento.name }}</h1>
 		<div class="row">
 			<div class="card bg-secondary mx-auto px-0" style="width: 50rem;">
-				<img class="card-img-top rounded" src="{{ asset('build/images/pimento.jpg') }}" alt="Card image cap">
+				<img class="card-img-top rounded" {% if pimento.poster %} src="{{ asset('uploads/images/pimento/') ~ pimento.poster }}" 
+				{% else %} src="{{ asset('build/images/pimento.jpg')}}" {% endif %} alt="pimento.name">
 				<div class="card-body">
 					<h5 class="card-title text-center">{{ pimento.name }}</h5>
 					{% if pimento.strength.power < 2000 %}

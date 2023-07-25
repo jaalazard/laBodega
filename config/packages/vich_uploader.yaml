@@ -7,6 +7,6 @@ vich_uploader:
 
     mappings:
         poster_file:
-            uri_prefix: /images
+            uri_prefix: /images/pimento
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
