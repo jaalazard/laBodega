@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mail de redéfinitions du mot de passe{% endblock %}
+
+{% block body %}
+    <p>
+        If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p>Si vous ne recevez pas d'e-mail, vérifiez vos spam ou <a href="{{ path('app_forgot_password_request') }}">essayez à nouveau</a>.</p>
+{% endblock %}
